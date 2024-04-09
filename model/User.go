@@ -7,8 +7,8 @@ type Address struct {
 }
 
 type User struct {
-	ID      int64  `gorm:"primaryKey"`
-	Name    string `gorm:"type:varchar(100)"`
-	Age     int    `gorm:"type:int"`
+	ID      int   `gorm:"primaryKey"`
+	Name    string  `gorm:"type:varchar(100)"`
+	Age     int     `gorm:"type:int"`
 	Address Address `gorm:"embedded"`
 }

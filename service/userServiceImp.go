@@ -10,14 +10,24 @@ type UserServiceImp struct {
 	userRepo *repository.UserRepository
 }
 
-func NewUserService(userRepo *repository.UserRepository) UserService {
+func  NewUserService(userRepo *repository.UserRepository) *UserServiceImp {
 	return &UserServiceImp{
 		userRepo: userRepo,
 	}
 }
 
-
-func (s *UserServiceImp) CreateUser(user *model.User) error {
-	// Here you can add any business logic before saving the user
-	return s.userRepo.CreateUser(user)
+func (ur *UserServiceImp) CreateUser(user *model.User) (*model.User, error){
+	return nil,nil
+}
+func (ur *UserServiceImp)UpdateUser(user *model.User) (*model.User, error){
+	return nil,nil
+}
+func (ur *UserServiceImp)GetUserByID(id int) (*model.User, error){
+	return nil,nil
+}
+func (ur *UserServiceImp)GetUsers() (*[]model.User, error){
+	return nil,nil
+}
+func (ur *UserServiceImp)DeleteUser(user *model.User) error{
+	return nil
 }
