@@ -5,29 +5,32 @@ import (
 	"github.com/hs1121/user/repository"
 )
 
-// UserService implements the IUserService interface.
 type UserServiceImp struct {
-	userRepo *repository.UserRepository
+	userRepo repository.UserRepository 
 }
 
-func  NewUserService(userRepo *repository.UserRepository) *UserServiceImp {
+func NewUserService(userRepo repository.UserRepository) UserService {
 	return &UserServiceImp{
 		userRepo: userRepo,
 	}
 }
 
-func (ur *UserServiceImp) CreateUser(user *model.User) (*model.User, error){
-	return nil,nil
+func (s *UserServiceImp) CreateUser(user *model.User) (*model.User, error) {
+	return s.userRepo.CreateUser(user)
 }
-func (ur *UserServiceImp)UpdateUser(user *model.User) (*model.User, error){
-	return nil,nil
+
+func (s *UserServiceImp) UpdateUser(user *model.User) (*model.User, error) {
+	return s.userRepo.UpdateUser(user)
 }
-func (ur *UserServiceImp)GetUserByID(id int) (*model.User, error){
-	return nil,nil
+
+func (s *UserServiceImp) GetUserByID(id int) (*model.User, error) {
+	return s.userRepo.GetUserByID(id)
 }
-func (ur *UserServiceImp)GetUsers() (*[]model.User, error){
-	return nil,nil
+
+func (s *UserServiceImp) GetUsers() (*[]model.User, error) {
+	return s.userRepo.GetAllUsers()
 }
-func (ur *UserServiceImp)DeleteUser(user *model.User) error{
-	return nil
+
+func (s *UserServiceImp) DeleteUser(id int) error {
+	return s.userRepo.DeleteUser(id)
 }

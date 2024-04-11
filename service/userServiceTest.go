@@ -17,7 +17,7 @@ func NewUserServiceTest(repository *repository.UserRepositoryTest) *UserServiceT
 }
 
 func (u *UserServiceTest) CreateUser(user *model.User) (*model.User, error) {
-	user.ID= u.repository.GetNewId()
+	user.ID = u.repository.GetNewId()
 	return u.repository.CreateUser(user)
 }
 func (u *UserServiceTest) UpdateUser(user *model.User) (*model.User, error) {
@@ -26,9 +26,9 @@ func (u *UserServiceTest) UpdateUser(user *model.User) (*model.User, error) {
 func (u *UserServiceTest) GetUserByID(id int) (*model.User, error) {
 	return u.repository.GetUserByID(id)
 }
-func (u *UserServiceTest) GetUsers() (*[]model.User,error) {
+func (u *UserServiceTest) GetUsers() (*[]model.User, error) {
 	return u.repository.GetAllUsers()
 }
-func (u *UserServiceTest) DeleteUser(user *model.User) error {
-	return u.repository.DeleteUser(user.ID)
+func (u *UserServiceTest) DeleteUser(id int) error {
+	return u.repository.DeleteUser(id)
 }

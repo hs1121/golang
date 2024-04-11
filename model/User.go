@@ -12,3 +12,7 @@ type User struct {
 	Age     int     `gorm:"type:int"`
 	Address Address `gorm:"embedded"`
 }
+
+func (User) TableName() string {
+    return "user"
+}

@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -83,4 +84,19 @@ func (uc UserController) UpdateUser(c *gin.Context) {
 
 	c.JSON(http.StatusOK, response)
 }
-func (uc UserController) DeleteUser(c *gin.Context) {}
+func (uc UserController) DeleteUser(c *gin.Context) {
+	idParam := c.Param("id")
+
+	id, err := strconv.Atoi(idParam)
+	if err != nil {
+		c.JSON(400, gin.H{"error": "Invalid ID"})
+		return
+	}
+	 err = uc.UserService.DeleteUser(id)
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+		return
+	}
+	message := fmt.Sprintf("User with id %d deleted", id)
+	c.JSON(200, message)
+}
